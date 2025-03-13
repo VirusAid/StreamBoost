@@ -1,0 +1,42 @@
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import { Bar } from 'react-chartjs-2';
+
+const App = () => {
+  const [streamers, setStreamers] = useState([]);
+
+  // Загрузка данных с бэкенда
+  useEffect(() => {
+    axios.get('http://localhost:8000/streamers/')
+      .then(response => setStreamers(response.data))
+      .catch(error => console.error(error));
+  }, []);
+
+  // Данные для графика
+  const chartData = {
+    labels: streamers.map(streamer => streamer.name),
+    datasets: [
+      {
+        label: 'Followers',
+        data: streamers.map(streamer => streamer.followers),
+        backgroundColor: 'rgba(75, 192, 192, 0.6)',
+      },
+    ],
+  };
+
+  return (
+    <div>
+      <h1>StreamBoost Dashboard</h1>
+      <Bar data={chartData} />
+      <ul>
+        {streamers.map(streamer => (
+          <li key={streamer.id}>
+            {streamer.name} - {streamer.platform} ({streamer.followers} followers)
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+};
+
+export default App;

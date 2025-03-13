@@ -1,0 +1,6 @@
+CREATE TABLE streamers (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    platform VARCHAR(255) NOT NULL,
+    followers INT DEFAULT 0
+);
