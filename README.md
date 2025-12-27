@@ -1,4 +1,4 @@
-**Проект не закончен(это лишь набросок)!
+Проект не закончен(это лишь набросок)!
 
 ---
 
@@ -63,7 +63,7 @@
 - Убедитесь, что у вас установлены Docker и Docker Compose.
 - Склонируйте репозиторий:
   ```bash
-  git clone https://github.com/yourusername/streamboost.git
+  git clone https://github.com/VirusAid/streamboost.git
   cd streamboost
   ```
 
